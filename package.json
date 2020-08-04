@@ -62,6 +62,7 @@
   },
   "devDependencies": {
     "@tarojs/mini-runner": "2.2.11",
+    "@tarojs/plugin-mock": "^0.0.6",
     "@tarojs/plugin-sass": "2.2.11",
     "@tarojs/plugin-terser": "2.2.11",
     "@tarojs/webpack-runner": "2.2.11",

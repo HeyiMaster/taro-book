@@ -5,55 +5,76 @@ const config = {
   deviceRatio: {
     '640': 2.34 / 2,
     '750': 1,
-    '828': 1.81 / 2
+    '828': 1.81 / 2,
   },
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV}`,
   babel: {
     sourceMap: true,
     presets: [
-      ['env', {
-        modules: false
-      }]
+      [
+        'env',
+        {
+          modules: false,
+        },
+      ],
     ],
     plugins: [
       'transform-decorators-legacy',
       'transform-class-properties',
       'transform-object-rest-spread',
-      ['transform-runtime', {
-        'helpers': false,
-        'polyfill': false,
-        'regenerator': true,
-        'moduleName': 'babel-runtime'
-      }]
-    ]
+      [
+        'transform-runtime',
+        {
+          helpers: false,
+          polyfill: false,
+          regenerator: true,
+          moduleName: 'babel-runtime',
+        },
+      ],
+    ],
   },
   plugins: [
     '@tarojs/plugin-sass',
-    '@tarojs/plugin-terser'
+    '@tarojs/plugin-terser',
+    [
+      '@tarojs/plugin-mock',
+      {
+        port: 8888,
+        mocks: {
+          'GET /api/user/1': {
+            statusCode: 200,
+            success: true,
+            data: [
+              { id: 0, title: 'taro' },
+              { id: 1, title: 'walker' },
+            ],
+          },
+        },
+      },
+    ],
   ],
-  defineConstants: {
-  },
+  defineConstants: {},
   mini: {
     postcss: {
       pxtransform: {
         enable: true,
-        config: {}
+        config: {},
       },
       url: {
         enable: true,
         config: {
-          limit: 10240 // 设定转换尺寸上限
-        }
+          limit: 10240, // 设定转换尺寸上限
+        },
       },
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
           namingPattern: 'module', // 转换模式，取值为 global/module
-          generateScopedName: '[name]__[local]___[hash:base64:5]'
-        }
-      }
-    }
+          generateScopedName: '[name]__[local]___[hash:base64:5]',
+        },
+      },
+    },
   },
   h5: {
     publicPath: '/',
@@ -62,27 +83,32 @@ const config = {
       autoprefixer: {
         enable: true,
         config: {
-          browsers: [
-            'last 3 versions',
-            'Android >= 4.1',
-            'ios >= 8'
-          ]
-        }
+          browsers: ['last 3 versions', 'Android >= 4.1', 'ios >= 8'],
+        },
       },
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
           namingPattern: 'module', // 转换模式，取值为 global/module
-          generateScopedName: '[name]__[local]___[hash:base64:5]'
-        }
-      }
-    }
-  }
-}
+          generateScopedName: '[name]__[local]___[hash:base64:5]',
+        },
+      },
+    },
+    devServer: {
+      proxy: {
+        '/api/': {
+          target: 'http://localhost:8888',
+          // pathRewrite: { '^/api/': '/' },
+          changeOrigin: true,
+        },
+      },
+    },
+  },
+};
 
-module.exports = function (merge) {
+module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+    return merge({}, config, require('./dev'));
   }
-  return merge({}, config, require('./prod'))
-}
+  return merge({}, config, require('./prod'));
+};

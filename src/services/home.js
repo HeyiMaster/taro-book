@@ -2,7 +2,7 @@ import Request from '../utils/request';
 
 export function fetchList() {
   return Request({
-    url: 'https://cnodejs.org/api/v1/topics',
+    url: 'http://localhost:8888/api/user/1',
     method: 'GET',
   });
 }

@@ -8,6 +8,7 @@ export default {
   effects: {
     *fetchList({ payload }, { call, put }) {
       const { data } = yield call(homeService.fetchList, {});
+      // console.log('data: ', data);
       yield put({
         type: 'save',
         list: data,
