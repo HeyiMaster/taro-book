@@ -37,22 +37,6 @@ const config = {
   plugins: [
     '@tarojs/plugin-sass',
     '@tarojs/plugin-terser',
-    [
-      '@tarojs/plugin-mock',
-      {
-        port: 8888,
-        mocks: {
-          'GET /api/user/1': {
-            statusCode: 200,
-            success: true,
-            data: [
-              { id: 0, title: 'taro' },
-              { id: 1, title: 'walker' },
-            ],
-          },
-        },
-      },
-    ],
   ],
   defineConstants: {},
   mini: {
@@ -94,15 +78,15 @@ const config = {
         },
       },
     },
-    devServer: {
-      proxy: {
-        '/api/': {
-          target: 'http://localhost:8888',
-          // pathRewrite: { '^/api/': '/' },
-          changeOrigin: true,
-        },
-      },
-    },
+    // devServer: {
+    //   proxy: {
+    //     '/api/': {
+    //       target: 'http://localhost:8888',
+    //       // pathRewrite: { '^/api/': '/' },
+    //       changeOrigin: true,
+    //     },
+    //   },
+    // },
   },
 };
 
