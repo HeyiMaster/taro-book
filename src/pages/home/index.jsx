@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
+import HeNavigator from '../../components/HeNavigator';
 import './index.scss';
 
 @connect(({ index, loading }) => ({
@@ -22,21 +23,27 @@ export default class Index extends Component {
   componentDidHide() {}
 
   config = {
-    navigationBarTitleText: '首页',
+    navigationBarTitleText: '合一大师',
+    navigationBarTextStyle: 'white',
+    navigationStyle: 'custom',
   };
 
   render() {
     const { list, modelLoading, fetchListLoading } = this.props;
     return (
       <View className="index">
-        <Text>Hello world!</Text>
+        <HeNavigator title="合一大师" backgroundColor="#00B388" color="#FFF" />
+        {/* <HeNavigator backgroundColor="pink" color="#000">
+          <Text>123</Text>
+        </HeNavigator> */}
+        {/* <Text>Hello world!</Text>
         <Text>{modelLoading && '页面loading'}</Text>
         <Text>{fetchListLoading && '接口loading'}</Text>
         {list.map((e, i) => (
           <View key={e.id} style={{ display: 'flex' }}>
             <Text>{e.title}</Text>
           </View>
-        ))}
+        ))} */}
       </View>
     );
   }
