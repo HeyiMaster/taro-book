@@ -1,0 +1,15 @@
+.he-search {
+  background-color: #F3F3F3;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 60px;
+  box-sizing: border-box;
+
+  &__input__placeholder {
+    font-size: 24px;
+    margin-left: 10px;
+    color: #D5D5D5;
+  }
+}

@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import HeNavigator from '../../components/HeNavigator';
+import HeSearch from '../../components/HeSearch';
 import './index.scss';
 
 @connect(({ index, loading }) => ({
@@ -13,7 +14,7 @@ export default class Index extends Component {
   componentWillMount() {}
 
   componentDidMount() {
-    this.props.dispatch({ type: 'index/fetchList', payload: '123' });
+    // this.props.dispatch({ type: 'index/fetchList', payload: '123' });
   }
 
   componentWillUnmount() {}
@@ -32,18 +33,18 @@ export default class Index extends Component {
     const { list, modelLoading, fetchListLoading } = this.props;
     return (
       <View className="index">
-        <HeNavigator title="合一大师" backgroundColor="#00B388" color="#FFF" />
-        {/* <HeNavigator backgroundColor="pink" color="#000">
-          <Text>123</Text>
-        </HeNavigator> */}
-        {/* <Text>Hello world!</Text>
-        <Text>{modelLoading && '页面loading'}</Text>
-        <Text>{fetchListLoading && '接口loading'}</Text>
-        {list.map((e, i) => (
-          <View key={e.id} style={{ display: 'flex' }}>
-            <Text>{e.title}</Text>
+        {/* <HeNavigator title="合一大师" backgroundColor="#00B388" color="#FFF" /> */}
+        {/* <View style={{width: '300px', margin: '0 auto'}}>
+
+        </View> */}
+        <HeNavigator>
+          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={{ marginRight: '10px' }}>分</Text>
+            <View style={{ width: '100%' }}>
+              <HeSearch placeholder="请输入关键词" />
+            </View>
           </View>
-        ))} */}
+        </HeNavigator>
       </View>
     );
   }
