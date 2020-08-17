@@ -1,3 +1,8 @@
+const isH5 = process.env.TARO_ENV === 'h5';
+console.log('isH5: ', isH5);
+const baseUrl = isH5 ? '' : 'http://localhost:8888';
+console.log('baseUrl: ', baseUrl);
+
 const config = {
   projectName: 'mmt-app',
   date: '2020-7-21',
@@ -9,6 +14,7 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV}`,
+  baseUrl,
   babel: {
     sourceMap: true,
     presets: [
@@ -34,26 +40,7 @@ const config = {
       ],
     ],
   },
-  plugins: [
-    '@tarojs/plugin-sass',
-    '@tarojs/plugin-terser',
-    [
-      '@tarojs/plugin-mock',
-      {
-        port: 8888,
-        mocks: {
-          'GET /api/user/1': {
-            statusCode: 200,
-            success: true,
-            data: [
-              { id: 0, title: 'taro' },
-              { id: 1, title: 'walker' },
-            ],
-          },
-        },
-      },
-    ],
-  ],
+  plugins: ['@tarojs/plugin-sass', '@tarojs/plugin-terser'],
   defineConstants: {},
   mini: {
     postcss: {
@@ -98,7 +85,7 @@ const config = {
       proxy: {
         '/api/': {
           target: 'http://localhost:8888',
-          // pathRewrite: { '^/api/': '/' },
+          pathRewrite: { '^/api/': '/' },
           changeOrigin: true,
         },
       },

@@ -3,6 +3,7 @@ import { View, Text } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import HeNavigator from '../../components/HeNavigator';
 import HeSearch from '../../components/HeSearch';
+// import MNavigator from '../../components/mnavigator/index';
 import './index.scss';
 
 @connect(({ index, loading }) => ({
@@ -14,7 +15,7 @@ export default class Index extends Component {
   componentWillMount() {}
 
   componentDidMount() {
-    // this.props.dispatch({ type: 'index/fetchList', payload: '123' });
+    this.props.dispatch({ type: 'index/fetchList', payload: '123' });
   }
 
   componentWillUnmount() {}
@@ -24,8 +25,7 @@ export default class Index extends Component {
   componentDidHide() {}
 
   config = {
-    navigationBarTitleText: '合一大师',
-    navigationBarTextStyle: 'white',
+    navigationBarTitleText: '首页',
     navigationStyle: 'custom',
   };
 

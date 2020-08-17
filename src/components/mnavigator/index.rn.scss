@@ -1,0 +1,16 @@
+.mnavigator__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 400px;
+  background-color: pink;
+}
+.button {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  position: absolute;
+  bottom: 100px;
+}

@@ -7,6 +7,7 @@ export default {
   },
   effects: {
     *fetchList({ payload }, { call, put }) {
+      console.log('payload: ', payload);
       const { data } = yield call(homeService.fetchList, {});
       // console.log('data: ', data);
       yield put({
