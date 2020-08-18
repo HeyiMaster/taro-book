@@ -1,15 +1,18 @@
 .he-search {
   background-color: #F3F3F3;
-  border-radius: 40px;
+  border-radius: 20Px;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  padding: 0 20px;
-  height: 60px;
-  box-sizing: border-box;
+  padding: 0 10Px;
+  height: 30Px;
 
-  &__input__placeholder {
-    font-size: 24px;
-    margin-left: 10px;
-    color: #D5D5D5;
+  &__input {
+    margin-left: 16px;
+    flex: 1;
+    &__placeholder {
+      font-size: 24px;
+      color: #D5D5D5;
+    }
   }
 }

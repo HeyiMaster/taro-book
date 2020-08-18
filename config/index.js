@@ -1,7 +1,5 @@
 const isH5 = process.env.TARO_ENV === 'h5';
-console.log('isH5: ', isH5);
 const baseUrl = isH5 ? '' : 'http://localhost:8888';
-console.log('baseUrl: ', baseUrl);
 
 const config = {
   projectName: 'mmt-app',
@@ -99,3 +97,5 @@ module.exports = function(merge) {
   }
   return merge({}, config, require('./prod'));
 };
+
+module.exports.config = config;

@@ -1,5 +1,7 @@
 import Taro from '@tarojs/taro';
-import { baseUrl, noConsole } from '../../config';
+import { config } from '../../config';
+
+const { baseUrl, noConsole } = config;
 
 const request_data = {
   // platform: 'wap',
@@ -12,8 +14,11 @@ export default (options = { method: 'GET', data: {} }) => {
       `${new Date().toLocaleString()}【 M=${options.url} 】P=${JSON.stringify(options.data)}`,
     );
   }
+  const { url = '' } = options;
+  // 如果不是 H5，则需将 api 前缀去除
+  const ultiUrl = process.env.TARO_ENV === 'h5' ? url : url.replace(/^(\/?api\/)/gi, '/');
   return Taro.request({
-    url: (baseUrl || '') + options.url,
+    url: baseUrl + ultiUrl,
     data: {
       ...request_data,
       ...options.data,

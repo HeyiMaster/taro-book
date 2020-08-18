@@ -1,0 +1,23 @@
+.he-navigator {
+  &__left {
+    margin-left: 30px;
+  }
+  &__wrapper {
+    padding-bottom: 10px;
+    &__inner {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+    }
+  }
+  &__title__wrapper {
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  &__title {
+    margin-left: -80px;
+  }
+}

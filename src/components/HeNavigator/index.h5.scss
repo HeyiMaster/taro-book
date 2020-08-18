@@ -1,0 +1,23 @@
+.he-navigator {
+  &__left {
+    margin-left: 30px;
+  }
+  &__wrapper {
+    height: 30Px;
+    line-height: 30Px;
+    padding: 10px 0;
+    &__inner {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+    }
+  }
+  &__title__wrapper {
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

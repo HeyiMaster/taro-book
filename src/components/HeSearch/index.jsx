@@ -10,7 +10,7 @@ export default function HeSearch({ style, placeholder }) {
       <View>
         <Text>🔍</Text>
       </View>
-      <Input placeholder={placeholder} placeholderClass={`${className}__input__placeholder`} />
+      <Input placeholder={placeholder} className={`${className}__input`} placeholderClass={`${className}__input__placeholder`} />
     </View>
   );
 }
