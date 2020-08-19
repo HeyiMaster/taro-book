@@ -32,4 +32,9 @@ function getSafeArea() {
 function getMenuArea() {
   return Taro.getMenuButtonBoundingClientRect();
 }
-export { getSafeArea, getMenuArea };
+
+function px(value) {
+  return process.env.TARO_ENV === 'weapp' ? `${value}px` : value;
+}
+
+export { getSafeArea, getMenuArea, px };

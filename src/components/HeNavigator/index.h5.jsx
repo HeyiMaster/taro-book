@@ -6,7 +6,6 @@ import './index.h5.scss';
 export default function HeNavigator({ title, children, style, backgroundColor, color }) {
   console.log('title: ', title);
   const className = 'he-navigator';
-  const { screenWidth } = Taro.getSystemInfoSync();
   return (
     <View className={className} style={{ backgroundColor, color }}>
       <View
