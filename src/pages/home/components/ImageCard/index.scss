@@ -1,0 +1,20 @@
+.image-card-wrapper {
+  border-radius: 30px;
+  overflow: hidden;
+
+  &__title-wrapper {
+    padding: 20px 30px;
+    background-color: #F9F9F9;
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__desc {
+    font-size: 12Px;
+    display: flex;
+    color: #9F9F9F;
+    margin: 20px 0;
+  }
+}
