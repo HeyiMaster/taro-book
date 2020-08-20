@@ -1,0 +1,36 @@
+.he-header-card {
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 30px;
+    background-color: #F5F5F5;
+    height: 200px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  &__logo {
+    overflow: hidden;
+    border-radius: 20px;
+    width: 140px;
+    height: 140px;
+  }
+  &__right {
+    flex: 1;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+    &-title {
+      font-size: 24px;
+    }
+    &-action {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro';
+import Taro, { useCallback } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 
 import './index.h5.scss';
@@ -6,6 +6,9 @@ import './index.h5.scss';
 export default function HeNavigator({ title, children, style, backgroundColor, color }) {
   console.log('title: ', title);
   const className = 'he-navigator';
+  const handleClick = useCallback(() => {
+    Taro.navigateBack();
+  }, []);
   return (
     <View className={className} style={{ backgroundColor, color }}>
       <View
@@ -14,7 +17,7 @@ export default function HeNavigator({ title, children, style, backgroundColor, c
       >
         {title ? (
           <View className={`${className}__wrapper__inner`}>
-            <View className={`${className}__left`}>
+            <View className={`${className}__left`} onClick={handleClick}>
               <Text>＜</Text>
             </View>
             <View

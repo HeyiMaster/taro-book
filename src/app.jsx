@@ -24,7 +24,14 @@ class App extends Component {
   componentDidCatchError() {}
 
   config = {
-    pages: ['pages/home/index', 'pages/goods/index', 'pages/message/index', 'pages/mine/index'],
+    darkmode: true,
+    pages: [
+      'pages/message/index',
+      'pages/home/index',
+      'pages/goods/index',
+      'pages/mine/index',
+      'pages/message-detail/index',
+    ],
     tabBar: {
       color: '#9F9F9F',
       selectedColor: '#FFFFFF',

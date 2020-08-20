@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro';
+import Taro, { useCallback } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { StatusBar, SafeAreaView } from 'react-native';
 
@@ -6,6 +6,9 @@ import './index.rn.scss';
 
 export default function HeNavigator({ title, children, style, backgroundColor, color, theme = 'dark' }) {
   const className = 'he-navigator';
+  const handleClick = useCallback(() => {
+    Taro.navigateBack();
+  }, []);
   return (
     <View className={className} style={{ backgroundColor }}>
       <StatusBar barStyle={`${theme}-content`} />
@@ -13,7 +16,7 @@ export default function HeNavigator({ title, children, style, backgroundColor, c
         <View className={`${className}__wrapper`} style={style}>
           {title ? (
             <View className={`${className}__wrapper__inner`}>
-              <View className={`${className}__left`}>
+              <View className={`${className}__left`} onClick={handleClick}>
                 <Text style={{ color }}>＜</Text>
               </View>
               <View className={`${className}__title__wrapper`}>
