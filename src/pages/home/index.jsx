@@ -39,13 +39,13 @@ export default class Index extends Component {
           style={{
             borderRadius: px(10),
             overflow: 'hidden',
-            height: px(200),
+            height: px(150),
             marginBottom: px(10),
           }}
         >
           <Swiper
             style={{
-              height: px(200),
+              height: px(150),
               marginBottom: px(10),
             }}
             indicatorColor="#999"
@@ -57,14 +57,14 @@ export default class Index extends Component {
             <SwiperItem>
               <Image
                 mode="widthFix"
-                style={{ width: '100%', height: px(200) }}
+                style={{ width: '100%' }}
                 src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/cristofer-jeschke-AqLIkOzWDAk-unsplash.jpg"
               />
             </SwiperItem>
             <SwiperItem>
               <Image
                 mode="widthFix"
-                style={{ width: '100%', height: px(200) }}
+                style={{ width: '100%' }}
                 src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/milada-vigerova-p8Drpg_duLw-unsplash.jpg"
               />
             </SwiperItem>

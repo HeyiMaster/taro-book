@@ -24,7 +24,37 @@ class App extends Component {
   componentDidCatchError() {}
 
   config = {
-    pages: ['pages/home/index'],
+    pages: ['pages/home/index', 'pages/goods/index', 'pages/message/index', 'pages/mine/index'],
+    tabBar: {
+      color: '#9F9F9F',
+      selectedColor: '#FFFFFF',
+      list: [
+        {
+          text: '首页',
+          pagePath: 'pages/home/index',
+          iconPath: './public/home.png',
+          selectedIconPath: './public/home-active.png',
+        },
+        {
+          text: '宝贝',
+          pagePath: 'pages/goods/index',
+          iconPath: './public/goods.png',
+          selectedIconPath: './public/goods-active.png',
+        },
+        {
+          text: '消息',
+          pagePath: 'pages/message/index',
+          iconPath: './public/message.png',
+          selectedIconPath: './public/message-active.png',
+        },
+        {
+          text: '我的',
+          pagePath: 'pages/mine/index',
+          iconPath: './public/mine.png',
+          selectedIconPath: './public/mine-active.png',
+        },
+      ],
+    },
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
