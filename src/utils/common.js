@@ -34,7 +34,11 @@ function getMenuArea() {
 }
 
 function px(value) {
-  return process.env.TARO_ENV === 'weapp' ? `${value}px` : value;
+  return process.env.TARO_ENV === 'rn' ? value : `${value}PX`;
 }
 
-export { getSafeArea, getMenuArea, px };
+function rpx(value) {
+  return process.env.TARO_ENV === 'rn' ? value : Taro.pxTransform(value);
+}
+
+export { getSafeArea, getMenuArea, px, rpx };
