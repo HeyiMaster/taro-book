@@ -26,9 +26,10 @@ class App extends Component {
   config = {
     darkmode: true,
     pages: [
-      'pages/message/index',
       'pages/home/index',
+      'pages/goods-detail/index',
       'pages/goods/index',
+      'pages/message/index',
       'pages/mine/index',
       'pages/message-detail/index',
     ],

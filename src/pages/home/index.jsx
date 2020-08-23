@@ -22,6 +22,10 @@ export default class Home extends Component {
     navigationStyle: 'custom',
   };
 
+  goDetail() {
+    Taro.navigateTo({ url: '/pages/goods-detail/index' });
+  }
+
   render() {
     const { banner, list } = this.props;
     const leftList = list.slice(0, Math.floor(list.length / 2));
@@ -57,7 +61,7 @@ export default class Home extends Component {
             autoplay
           >
             {banner.map(e => (
-              <SwiperItem key={e.url}>
+              <SwiperItem key={e.url} onClick={this.goDetail}>
                 <Image mode="widthFix" style={{ width: '100%' }} src={e.url} />
               </SwiperItem>
             ))}
