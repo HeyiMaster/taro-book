@@ -7,15 +7,15 @@ import HeSearch from '../../components/HeSearch';
 import ImageCard from './components/ImageCard';
 import './index.scss';
 
-@connect(({ index, loading }) => ({
-  ...index,
-  modelLoading: loading.models.index,
-  fetchListLoading: loading.effects['index/fetchList'],
+@connect(({ home, loading }) => ({
+  ...home,
+  modelLoading: loading.models.home,
+  fetchBannerLoading: loading.effects['home/fetchBanner'],
 }))
-export default class Index extends Component {
-
+export default class Home extends Component {
   componentDidMount() {
-    this.props.dispatch({ type: 'index/fetchList', payload: '123' });
+    this.props.dispatch({ type: 'home/fetchBanner' });
+    this.props.dispatch({ type: 'home/fetchList' });
   }
 
   config = {
@@ -23,9 +23,11 @@ export default class Index extends Component {
   };
 
   render() {
+    const { banner, list } = this.props;
+    const leftList = list.slice(0, Math.floor(list.length / 2));
+    const rightList = list.slice(Math.floor(list.length / 2));
     return (
       <View className="index">
-        {/* <HeNavigator title="Taro" backgroundColor="#00B388" color="#FFF" /> */}
         <HeNavigator>
           <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
             <Text style={{ marginRight: px(10) }}>分享</Text>
@@ -46,6 +48,7 @@ export default class Index extends Component {
             style={{
               height: px(150),
               marginBottom: px(10),
+              backgroundColor: '#F5F5F5',
             }}
             indicatorColor="#999"
             indicatorActiveColor="#333"
@@ -53,20 +56,11 @@ export default class Index extends Component {
             indicatorDots
             autoplay
           >
-            <SwiperItem>
-              <Image
-                mode="widthFix"
-                style={{ width: '100%' }}
-                src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/cristofer-jeschke-AqLIkOzWDAk-unsplash.jpg"
-              />
-            </SwiperItem>
-            <SwiperItem>
-              <Image
-                mode="widthFix"
-                style={{ width: '100%' }}
-                src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/milada-vigerova-p8Drpg_duLw-unsplash.jpg"
-              />
-            </SwiperItem>
+            {banner.map(e => (
+              <SwiperItem key={e.url}>
+                <Image mode="widthFix" style={{ width: '100%' }} src={e.url} />
+              </SwiperItem>
+            ))}
           </Swiper>
         </View>
         <View
@@ -77,28 +71,14 @@ export default class Index extends Component {
           }}
         >
           <View style={{ width: '48%' }}>
-            <ImageCard
-              src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/cristofer-jeschke-AqLIkOzWDAk-unsplash.jpg"
-              title="商品标题1"
-              desc="商品描述111"
-            />
-            <ImageCard
-              src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/milada-vigerova-p8Drpg_duLw-unsplash.jpg"
-              title="商品标题2"
-              desc="商品描述222"
-            />
+            {leftList.map(e => (
+              <ImageCard key={e} src={e.url} title={e.title} desc={e.desc} />
+            ))}
           </View>
           <View style={{ width: '48%' }}>
-            <ImageCard
-              src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/milada-vigerova-p8Drpg_duLw-unsplash.jpg"
-              title="商品标题3"
-              desc="商品描述333"
-            />
-            <ImageCard
-              src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/cristofer-jeschke-AqLIkOzWDAk-unsplash.jpg"
-              title="商品标题4"
-              desc="商品描述444"
-            />
+            {rightList.map(e => (
+              <ImageCard key={e} src={e.url} title={e.title} desc={e.desc} />
+            ))}
           </View>
         </View>
       </View>

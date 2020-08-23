@@ -10,7 +10,7 @@ import './index.scss';
 
 export default function MessageDetail() {
   const className = 'message';
-  const { screenHeight, statusBarHeight } = Taro.getSystemInfoSync();
+  const { screenHeight, statusBarHeight, safeArea } = Taro.getSystemInfoSync();
   return (
     <View className={className}>
       <View className={`${className}__header`}>
@@ -19,7 +19,13 @@ export default function MessageDetail() {
       </View>
       <ScrollView
         className={`${className}__content`}
-        style={{ height: px(screenHeight - statusBarHeight - (process.env.TARO_ENV === 'rn' ? 210 : 190)) }}
+        // style={{ height: px(screenHeight - statusBarHeight - (process.env.TARO_ENV === 'rn' ? 210 : 190)) }}
+        style={{
+          height:
+            process.env.TARO_ENV === 'rn'
+              ? px(screenHeight - statusBarHeight - 210)
+              : px((safeArea ? safeArea.height : screenHeight) - 190 ),
+        }}
         scrollY
       >
         <View className={`${className}__content-list`}>

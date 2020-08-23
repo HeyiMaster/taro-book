@@ -1,15 +1,15 @@
-import Request from '../utils/request';
+import request from '../utils/request';
 
 export function fetchList() {
-  return Request({
-    url: 'api/user/1',
+  return request({
+    url: 'api/home/list',
     method: 'GET',
   });
 }
 
-export function fetchUsers() {
-  return Request({
-    url: 'https://cnodejs.org/api/v1/topics',
+export function fetchBanner() {
+  return request({
+    url: 'api/home/banner',
     method: 'GET',
   });
 }

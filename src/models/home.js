@@ -1,15 +1,21 @@
 import * as homeService from '../services/home';
 
 export default {
-  namespace: 'index',
+  namespace: 'home',
   state: {
-    list: ['walker', 'xiaoming'],
+    list: [],
+    banner: []
   },
   effects: {
-    *fetchList({ payload }, { call, put }) {
-      console.log('payload: ', payload);
-      const { data } = yield call(homeService.fetchList, {});
-      // console.log('data: ', data);
+    *fetchBanner(_, { call, put }) {
+      const { data } = yield call(homeService.fetchBanner);
+      yield put({
+        type: 'save',
+        banner: data,
+      });
+    },
+    *fetchList(_, { call, put }) {
+      const { data } = yield call(homeService.fetchList);
       yield put({
         type: 'save',
         list: data,
@@ -23,6 +29,6 @@ export default {
         ...props,
       };
     },
-    increase() {},
   },
 };
+
