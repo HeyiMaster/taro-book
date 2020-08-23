@@ -24,6 +24,14 @@ export default function GoodsDetail() {
   const goBack = useCallback(() => {
     Taro.navigateBack();
   }, []);
+  // 预览图片
+  const previewImage = useCallback(current => {
+    const urls = [
+      'https://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/milada-vigerova-p8Drpg_duLw-unsplash.jpg',
+      'https://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/cristofer-jeschke-AqLIkOzWDAk-unsplash.jpg',
+    ];
+    Taro.previewImage({ urls, current });
+  }, []);
   const ButtonContent = (
     <View className={`${className}__button-content`}>
       <View className={`${className}__button-swap`}>
@@ -69,18 +77,30 @@ export default function GoodsDetail() {
           indicatorDots
           autoplay
         >
-          <SwiperItem>
+          <SwiperItem
+            onClick={() =>
+              previewImage(
+                'https://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/milada-vigerova-p8Drpg_duLw-unsplash.jpg',
+              )
+            }
+          >
             <Image
               mode="aspectFill"
               style={{ width: '100%', height: px(swiperHeight) }}
-              src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/milada-vigerova-p8Drpg_duLw-unsplash.jpg"
+              src="https://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/milada-vigerova-p8Drpg_duLw-unsplash.jpg"
             />
           </SwiperItem>
-          <SwiperItem>
+          <SwiperItem
+            onClick={() =>
+              previewImage(
+                'https://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/cristofer-jeschke-AqLIkOzWDAk-unsplash.jpg',
+              )
+            }
+          >
             <Image
               mode="aspectFill"
               style={{ width: '100%', height: px(swiperHeight) }}
-              src="http://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/cristofer-jeschke-AqLIkOzWDAk-unsplash.jpg"
+              src="https://walker-markdown.oss-cn-shenzhen.aliyuncs.com/uPic/cristofer-jeschke-AqLIkOzWDAk-unsplash.jpg"
             />
           </SwiperItem>
         </Swiper>
