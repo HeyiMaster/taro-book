@@ -16,6 +16,19 @@ function getTop() {
   }
 }
 
+function getBottom() {
+  const isWeapp = process.env.TARO_ENV === 'weapp';
+  if (isWeapp) {
+    const {
+      safeArea: { bottom },
+      screenHeight,
+    } = Taro.getSystemInfoSync();
+    return screenHeight - bottom;
+  } else {
+    return 0;
+  }
+}
+
 export default function GoodsDetail() {
   const className = 'he-goods-detail';
   const { windowHeight } = Taro.getSystemInfoSync();
@@ -45,6 +58,20 @@ export default function GoodsDetail() {
   );
   return (
     <View className={className} style={{ flex: 1 }}>
+      <View className={`${className}__action`} style={{ top, height }}>
+        <View className={`${className}__action-item`} onClick={goBack}>
+          <Iconfont name="icon-fanhui-xianxing" color="#FFFFFF" size={32} />
+        </View>
+        <View className={`${className}__action-item`}>
+          <Iconfont name="icon-iconfontzhizuobiaozhun20" color="#FFFFFF" size={32} />
+        </View>
+        <View className={`${className}__action-item`}>
+          <Iconfont name="icon-xihuan" color="#FFFFFF" size={32} />
+        </View>
+        <View className={`${className}__action-item`}>
+          <Iconfont name="icon--_liaotian" color="#FFFFFF" size={32} />
+        </View>
+      </View>
       <View
         style={{
           overflow: 'scroll',
@@ -52,20 +79,6 @@ export default function GoodsDetail() {
           height: px(windowHeight),
         }}
       >
-        <View className={`${className}__action`} style={{ top, height }}>
-          <View className={`${className}__action-item`} onClick={goBack}>
-            <Iconfont name="icon-fanhui-xianxing" color="#FFFFFF" size={32} />
-          </View>
-          <View className={`${className}__action-item`}>
-            <Iconfont name="icon-iconfontzhizuobiaozhun20" color="#FFFFFF" size={32} />
-          </View>
-          <View className={`${className}__action-item`}>
-            <Iconfont name="icon-xihuan" color="#FFFFFF" size={32} />
-          </View>
-          <View className={`${className}__action-item`}>
-            <Iconfont name="icon--_liaotian" color="#FFFFFF" size={32} />
-          </View>
-        </View>
         <Swiper
           className={`${className}__swiper`}
           style={{
@@ -138,7 +151,9 @@ export default function GoodsDetail() {
           <View style={{ flex: 1 }}>{ButtonContent}</View>
         </SafeAreaView>
       ) : (
-        <View className={`${className}__button`}>{ButtonContent}</View>
+        <View className={`${className}__button`} style={{ bottom: px(getBottom() + 10) }}>
+          {ButtonContent}
+        </View>
       )}
     </View>
   );
