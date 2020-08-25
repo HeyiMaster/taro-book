@@ -1,9 +1,10 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components';
+import { View, Swiper, SwiperItem, Image } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
-import { px } from '../../utils/common';
-import HeNavigator from '../../components/HeNavigator';
-import HeSearch from '../../components/HeSearch';
+import HeNavigator from '@/components/HeNavigator';
+import HeSearch from '@/components/HeSearch';
+import Iconfont from '@/components/Iconfont';
+import { px } from '@/utils/common';
 import ImageCard from './components/ImageCard';
 import './index.scss';
 
@@ -34,7 +35,9 @@ export default class Home extends Component {
       <View className="index">
         <HeNavigator>
           <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={{ marginRight: px(10) }}>分享</Text>
+            <View style={{ marginRight: px(10) }}>
+              <Iconfont name="icon-liwu" />
+            </View>
             <View style={{ flex: 1 }}>
               <HeSearch placeholder="请输入关键词" />
             </View>

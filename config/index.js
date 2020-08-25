@@ -1,5 +1,8 @@
+// const path = require('path');
+
 const isH5 = process.env.TARO_ENV === 'h5';
 const baseUrl = isH5 ? '' : 'http://localhost:8888';
+const rootPath = __dirname.slice(0, __dirname.lastIndexOf('/'));
 
 const config = {
   projectName: 'mmt-app',
@@ -13,6 +16,15 @@ const config = {
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV}`,
   baseUrl,
+  alias: {
+    '@/components': `${rootPath}/src/components`,
+    '@/utils': `${rootPath}/src/utils`,
+    '@/assets': `${rootPath}/src/assets`,
+  },
+  // alias: {
+  //   '@/components': path.resolve(__dirname, '..', 'src/components'),
+  //   '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+  // },
   babel: {
     sourceMap: true,
     presets: [

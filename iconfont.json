@@ -1,0 +1,9 @@
+{
+  "symbol_url": "https://at.alicdn.com/t/font_2026057_mklwhan0if.js",
+  "save_dir": "./src/components/Iconfont",
+  "use_typescript": false,
+  "platforms": ["weapp", "rn", "h5"],
+  "use_rpx": true,
+  "trim_icon_prefix": "",
+  "default_icon_size": 36
+}

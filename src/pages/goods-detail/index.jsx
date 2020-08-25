@@ -1,7 +1,8 @@
 import Taro, { useCallback } from '@tarojs/taro';
 import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components';
 import { SafeAreaView } from 'react-native';
-import { px } from '../../utils/common';
+import Iconfont from '@/components/Iconfont';
+import { px } from '@/utils/common';
 import './index.scss';
 
 function getTop() {
@@ -53,16 +54,16 @@ export default function GoodsDetail() {
       >
         <View className={`${className}__action`} style={{ top, height }}>
           <View className={`${className}__action-item`} onClick={goBack}>
-            <Text className={`${className}__action-item-text`}>1</Text>
+            <Iconfont name="icon-fanhui-xianxing" color="#FFFFFF" size={32} />
           </View>
           <View className={`${className}__action-item`}>
-            <Text className={`${className}__action-item-text`}>2</Text>
+            <Iconfont name="icon-iconfontzhizuobiaozhun20" color="#FFFFFF" size={32} />
           </View>
           <View className={`${className}__action-item`}>
-            <Text className={`${className}__action-item-text`}>3</Text>
+            <Iconfont name="icon-xihuan" color="#FFFFFF" size={32} />
           </View>
           <View className={`${className}__action-item`}>
-            <Text className={`${className}__action-item-text`}>4</Text>
+            <Iconfont name="icon--_liaotian" color="#FFFFFF" size={32} />
           </View>
         </View>
         <Swiper

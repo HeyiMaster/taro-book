@@ -1,11 +1,11 @@
 import Taro from '@tarojs/taro';
 import { View, ScrollView, Input } from '@tarojs/components';
-import HeNavigator from '../../components/HeNavigator';
+import HeNavigator from '@/components/HeNavigator';
+import { px } from '@/utils/common';
+import AvatarTo from '@/assets/avatar-to.png';
+import AvatarFrom from '@/assets/avatar-from.png';
 import HeaderCard from './components/HeaderCard';
 import MessageCell from './components/MessageCell';
-import AvatarTo from '../../public/avatar-to.png';
-import AvatarFrom from '../../public/avatar-from.png';
-import { px } from '../../utils/common';
 import './index.scss';
 
 export default function MessageDetail() {
