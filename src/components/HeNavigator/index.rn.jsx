@@ -1,6 +1,7 @@
 import Taro, { useCallback } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { StatusBar, SafeAreaView } from 'react-native';
+import Iconfont from '@/components/Iconfont';
 
 import './index.rn.scss';
 
@@ -17,7 +18,7 @@ export default function HeNavigator({ title, children, style, backgroundColor, c
           {title ? (
             <View className={`${className}__wrapper__inner`}>
               <View className={`${className}__left`} onClick={handleClick}>
-                <Text style={{ color }}>＜</Text>
+                <Iconfont name="icon-fanhui-xianxing" color={color} />
               </View>
               <View className={`${className}__title__wrapper`}>
                 <Text className={`${className}__title`} style={{ color }}>
